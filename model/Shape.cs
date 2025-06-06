@@ -65,6 +65,13 @@ namespace project_computer_graphics_2301321066
             set { fillColor = value; }
         }
 
+
+        private float borderWidth = 1.0f;
+        public virtual float BorderWidth
+        {
+            get { return borderWidth; }
+            set { borderWidth = value; }
+        }
         #endregion
 
 
@@ -78,6 +85,42 @@ namespace project_computer_graphics_2301321066
         {
             // shape.Rectangle.Inflate(shape.BorderWidth, shape.BorderWidth);
         }
+        public virtual void Translate(float dx, float dy)
+        {
+
+            Rectangle = new RectangleF(Rectangle.X + dx, Rectangle.Y + dy, Rectangle.Width, Rectangle.Height);
+        }
+
+
+        public virtual float RotationAngle { get; set; } = 0f;
+
+
+        public virtual void Rotate(float angleInDegrees)
+        {
+            RotationAngle = angleInDegrees;
+        }
+
+
+        protected PointF RotatePoint(PointF point, PointF center, float angle)
+        {
+            float radians = angle * (float)Math.PI / 180f;
+            float cos = (float)Math.Cos(radians);
+            float sin = (float)Math.Sin(radians);
+
+            float dx = point.X - center.X;
+            float dy = point.Y - center.Y;
+
+            return new PointF(
+                cos * dx - sin * dy + center.X,
+                sin * dx + cos * dy + center.Y
+            );
+        }
+
+        public float ScaleX { get; set; } = 1f;
+        public float ScaleY { get; set; } = 1f;
+
+        public abstract Shape Clone();
+
 
     }
 }

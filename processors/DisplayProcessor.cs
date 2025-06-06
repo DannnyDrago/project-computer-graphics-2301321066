@@ -1,4 +1,9 @@
-﻿using System;
+﻿using System.Collections.Generic;
+using System.Drawing.Drawing2D;
+using System.Drawing;
+using System.Windows.Forms;
+
+using System;
 using System.Drawing;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -50,7 +55,7 @@ namespace project_computer_graphics_2301321066
         /// Визуализация.
         /// Обхождане на всички елементи в списъка и извикване на визуализиращия им метод.
         /// </summary>
-      
+
         public virtual void Draw(Graphics grfx)
         {
             foreach (Shape item in ShapeList)
@@ -62,7 +67,7 @@ namespace project_computer_graphics_2301321066
         /// <summary>
         /// Визуализира даден елемент от изображението.
         /// </summary>
-       
+
         public virtual void DrawShape(Graphics grfx, Shape item)
         {
             item.DrawSelf(grfx);
